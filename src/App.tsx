@@ -5,6 +5,7 @@ import { Chess } from "chess.js";
 import axios from "axios";
 
 function App() {
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [game, setGame] = useState(new Chess());
 
   function makeAMove(move: { from: string; to: string; promotion?: string }) {
@@ -30,7 +31,7 @@ function App() {
   function makeBestMove(currentGame: Chess) {
     const fen = currentGame.fen();
     const bestMove = axios
-      .post("http://localhost:8080/best", { fen })
+      .post(`${BACKEND_URL}/best`, { fen })
       .then((response) => {
         const move = {
           from: response.data.fromString,
