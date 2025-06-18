@@ -97,7 +97,7 @@ function App() {
           {game.isCheckmate()
             ? "CHECKMATE"
             : isWaitingForMove
-            ? "Possum is thinking..."
+            ? "Thinking..."
             : "It's your turn"}
         </div>
         <div className="buttons">
