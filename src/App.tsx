@@ -3,9 +3,11 @@ import "./App.css";
 import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import axios from "axios";
+import Alert from "@mui/material/Alert";
 
 function App() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+  const [warning, setWarning] = useState(true);
   const [previousState, setPreviousState] = useState(new Chess());
   const [game, setGame] = useState(new Chess());
   const [isWaitingForMove, setIsWaitingForMove] = useState(false);
@@ -72,6 +74,17 @@ function App() {
 
   return (
     <>
+      {warning && (
+        <Alert
+          severity="warning"
+          onClose={() => {
+            setWarning(() => false);
+          }}
+        >
+          Backend is hosted on a free tier and may take ~30–60 seconds to cold
+          start. Try restarting the page if the engine does not response.
+        </Alert>
+      )}
       <div className="container">
         <label htmlFor="">
           Search depth: {depth}
