@@ -1,54 +1,39 @@
-# React + TypeScript + Vite
+# [Caissa Bot](https://cvwoforum.netlify.app/)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About This Project
 
-Currently, two official plugins are available:
+This project is a hobby project to create and optimize a chess engine capable of defeating amateur players.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Local Installation
+> [!NOTE]
+> This is the directory for the frontend of the forum. You must start the backend for the site to be fully functional.
+> To start the backend, clone the repo at [Caissa Backend](https://github.com/NgoHoangNhatMinh/caissa-backend) and follow the instructions to run the app locally.
 
-## Expanding the ESLint configuration
+1. You need the following prerequisites:
+   - [Node.js 22.13.1](https://nodejs.org/en/download)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+2. Clone the repo:
+   ```console
+   $ git clone https://github.com/NgoHoangNhatMinh/caissa-frontend.git
+   ```
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+3. Installing dependencies:
+   ```console
+   $ npm install
+   ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+4. Start the Vite server:
+   ```console
+   $ npm run dev
+   ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+5. Open the web application from the link `localhost:5173`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## User Manual
+> [!NOTE]
+> Backend is hosted on a free tier and may take ~30–60 seconds to cold start.
+### Gameplay
+- Adjust the game's difficulty by changing the search depth slider.
+- Make your move and wait for the engine to response. Reponse may take longer for higher search depth.
+- You can undo a move or restart the game by pressing the corresponding options.
+<img width="1886" height="865" alt="image" src="https://github.com/user-attachments/assets/9f011603-63e2-48e0-8e37-9358eaacf99e" />
