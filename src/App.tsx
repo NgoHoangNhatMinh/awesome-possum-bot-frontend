@@ -4,6 +4,7 @@ import { Chessboard } from "react-chessboard";
 import { Chess } from "chess.js";
 import axios from "axios";
 import Alert from "@mui/material/Alert";
+import GameSetup from "./GameSetup";
 
 function App() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
@@ -12,6 +13,7 @@ function App() {
   const [game, setGame] = useState(new Chess());
   const [isWaitingForMove, setIsWaitingForMove] = useState(false);
   const [depth, setDepth] = useState(4);
+  const [openMenu, setOpenMenu] = useState(true);
 
   function makeAMove(move: { from: string; to: string; promotion?: string }) {
     const gameCopy = new Chess(game.fen());
@@ -63,22 +65,34 @@ function App() {
     return true;
   }
 
-  function handleRestartGame() {
-    setGame(new Chess());
-  }
-
   function handleUndo() {
     if (previousState.fen() === game.fen()) return;
     setGame(previousState);
   }
 
+  function handleNewGame() {
+    // setGame(new Chess());
+    setOpenMenu(true);
+  }
+
+  const handlePlay = () => {};
+
+  const handleCloseMenu = () => {
+    setOpenMenu(false);
+  };
+
   return (
     <>
+      <GameSetup
+        open={openMenu}
+        handlePlay={handlePlay}
+        handleClose={handleCloseMenu}
+      ></GameSetup>
       {warning && (
         <Alert
           severity="warning"
           onClose={() => {
-            setWarning(() => false);
+            setWarning(false);
           }}
         >
           Backend is hosted on a free tier and may take ~30–60 seconds to cold
@@ -115,7 +129,8 @@ function App() {
         </div>
         <div className="buttons">
           <button onClick={handleUndo}>Undo Move</button>
-          <button onClick={handleRestartGame}>Restart game</button>
+          <button onClick={() => {}}>Resign</button>
+          <button onClick={handleNewGame}>New game</button>
         </div>
       </div>
     </>
