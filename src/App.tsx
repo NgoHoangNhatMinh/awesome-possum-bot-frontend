@@ -11,7 +11,7 @@ function App() {
   const [previousState, setPreviousState] = useState(new Chess());
   const [game, setGame] = useState(new Chess());
   const [isWaitingForMove, setIsWaitingForMove] = useState(false);
-  const [depth, setDepth] = useState(4);
+  const [depth, setDepth] = useState(3);
 
   function makeAMove(move: { from: string; to: string; promotion?: string }) {
     const gameCopy = new Chess(game.fen());
